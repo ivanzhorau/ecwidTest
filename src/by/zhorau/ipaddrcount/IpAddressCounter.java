@@ -1,13 +1,13 @@
-package by.zhorau.ipaddrcout;
+package by.zhorau.ipaddrcount;
+
+import by.zhorau.ipaddrcount.binarytree.BinaryTree;
 
 import java.nio.ByteBuffer;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
 
 public class IpAddressCounter {
     private final Iterator<String> addressIterator;
-    private Set<Integer> set = new HashSet<>();
+    private final BinaryTree binaryTree = new BinaryTree();
     public IpAddressCounter(Iterator<String> addressIterator){
         this.addressIterator = addressIterator;
     }
@@ -17,9 +17,7 @@ public class IpAddressCounter {
             String address = addressIterator.next();
             byte[] addressArray = convertAddressToByteArray(address);
             int addressInt = ByteBuffer.wrap(addressArray).getInt();
-            System.out.println(addressInt);
-            //bTree.add(addressInt);
-            set.add(addressInt);
+            binaryTree.add(addressInt);
         }
     }
 
@@ -34,7 +32,6 @@ public class IpAddressCounter {
     }
 
     public long getCount(){
-        //return bTree.size();
-        return set.size();
+        return binaryTree.size();
     }
 }

@@ -1,4 +1,4 @@
-package by.zhorau.ipaddrcout.binarytree;
+package by.zhorau.ipaddrcount.binarytree;
 
 public class Node {
     private final Integer value;

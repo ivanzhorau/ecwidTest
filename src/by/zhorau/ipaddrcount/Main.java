@@ -1,4 +1,4 @@
-package by.zhorau.ipaddrcout;
+package by.zhorau.ipaddrcount;
 
 import java.io.File;
 import java.io.FileNotFoundException;
