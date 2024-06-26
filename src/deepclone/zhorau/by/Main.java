@@ -1,0 +1,59 @@
+package deepclone.zhorau.by;
+
+import deepclone.zhorau.by.copyutils.CopyUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
+public class Main {
+    public static void main(String[] args) {
+        Man man = new Man("Ivan", 22, new ArrayList<>(Arrays.asList("Paleskija Rabinzony", "Čałaviek idzie")));
+        Man copy = (Man) CopyUtils.deepClone(man);
+        man.getFavoriteBooks().add("Halštuk-babačka");
+        System.out.println(man +"\n"+ copy);
+    }
+    public static class Man {
+        private String name;
+        private int age;
+        private List<String> favoriteBooks;
+
+        public Man(){}
+        public Man(String name, int age, List<String> favoriteBooks) {
+            this.name = name;
+            this.age = age;
+            this.favoriteBooks = favoriteBooks;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+
+        public List<String> getFavoriteBooks() {
+            return favoriteBooks;
+        }
+
+        public void setFavoriteBooks(List<String> favoriteBooks) {
+            this.favoriteBooks = favoriteBooks;
+        }
+
+        public String toString(){
+            return String.format("Name: %s \n" +
+                    "Age: %d \n" +
+                    "Books: %s \n", name, age, favoriteBooks);
+        }
+    }
+}
