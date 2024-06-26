@@ -1,4 +1,4 @@
-package deepclone.zhorau.by.copyutils;
+package by.zhorau.deepclone.copyutils;
 
 import java.lang.reflect.*;
 import java.util.*;

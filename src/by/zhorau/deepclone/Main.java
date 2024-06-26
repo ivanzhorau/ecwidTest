@@ -1,6 +1,6 @@
-package deepclone.zhorau.by;
+package by.zhorau.deepclone;
 
-import deepclone.zhorau.by.copyutils.CopyUtils;
+import by.zhorau.deepclone.copyutils.CopyUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
