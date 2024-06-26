@@ -2,14 +2,13 @@ package deepclone.zhorau.by;
 
 import deepclone.zhorau.by.copyutils.CopyUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
-        Man man = new Man("Ivan", 22, new ArrayList<>(Arrays.asList("Paleskija Rabinzony", "Čałaviek idzie")));
+        Man man = new Man("Ivan", 22, new ArrayList<>(Arrays.asList("Paleskija Rabinzony", "Čałaviek idzie")),new int[]{3,2,5});
         Man copy = (Man) CopyUtils.deepClone(man);
         man.getFavoriteBooks().add("Halštuk-babačka");
         System.out.println(man +"\n"+ copy);
@@ -18,13 +17,20 @@ public class Main {
         private String name;
         private int age;
         private List<String> favoriteBooks;
-
+        private int[] array;
         public Man(){}
         public Man(String name, int age, List<String> favoriteBooks) {
             this.name = name;
             this.age = age;
             this.favoriteBooks = favoriteBooks;
         }
+        public Man(String name, int age, List<String> favoriteBooks, int[] array) {
+            this.name = name;
+            this.age = age;
+            this.favoriteBooks = favoriteBooks;
+            this.array = array;
+        }
+
 
         public String getName() {
             return name;
@@ -51,9 +57,12 @@ public class Main {
         }
 
         public String toString(){
-            return String.format("Name: %s \n" +
-                    "Age: %d \n" +
-                    "Books: %s \n", name, age, favoriteBooks);
+            return String.format("""
+                    Name: %s\s
+                    Age: %d\s
+                    Books: %s\s
+                    Array: %s\s
+                    """, name, age, favoriteBooks, IntStream.of(array).boxed().collect(Collectors.toList()));
         }
     }
 }
