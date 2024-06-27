@@ -1,15 +1,23 @@
 package by.zhorau.ipaddrcount.binarytree;
 
 public class Node {
-    private final Integer value;
+    public static final boolean RED   = false;
+    public static final boolean BLACK = true;
+    private final int value;
     private Node left;
     private Node right;
+    private Node parent;
+    private boolean color = BLACK;
 
-    public Node(Integer value){
+    public Node(int value){
         this.value = value;
     }
+    public Node(int value, Node parent){
+        this.value = value;
+        this.parent = parent;
+    }
 
-    public Integer getValue() {
+    public int getValue() {
         return value;
     }
 
@@ -27,5 +35,21 @@ public class Node {
 
     public void setRight(Node right) {
         this.right = right;
+    }
+
+    public Node getParent() {
+        return parent;
+    }
+
+    public void setParent(Node parent) {
+        this.parent = parent;
+    }
+
+    public boolean getColor() {
+        return color;
+    }
+
+    public void setColor(boolean color) {
+        this.color = color;
     }
 }
