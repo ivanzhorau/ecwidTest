@@ -1,42 +1,48 @@
 package by.zhorau.ipaddrcount.binarytree;
 
-public class BinaryTree {
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Set;
+
+public class BinaryTree implements Set<Integer> {
     private long size = 0;
     private Node root;
 
     public BinaryTree() {
     }
 
-    public void add(int value) {
+    public boolean add(Integer value) {
         if (root == null) {
             root = new Node(value);
             size++;
         }
         Node current = root;
-        while (value != current.getValue()) {
-            if (value < current.getValue()) {
+        int currentValue;
+        while (value != (currentValue = current.getValue())) {
+            if (value < currentValue) {
                 if (current.getLeft() == null) {
                     current.setLeft(new Node(value, current));
                     size++;
                     current = current.getLeft();
                     fixAfterInsertion(current);
-                    break;
+                    return true;
                 } else {
                     current = current.getLeft();
                 }
             }
-            if (value > current.getValue()) {
+            if (value > currentValue) {
                 if (current.getRight() == null) {
                     current.setRight(new Node(value, current));
                     size++;
                     current = current.getRight();
                     fixAfterInsertion(current);
-                    break;
+                    return true;
                 } else {
                     current = current.getRight();
                 }
             }
         }
+        return false;
     }
 
     private void rotateLeft(Node p) {
@@ -135,7 +141,61 @@ public class BinaryTree {
     private static Node rightOf(Node p) {
         return (p == null) ? null: p.getRight();
     }
-    public long size() {
-        return size;
+    public int size() {
+        return (int)size;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        return false;
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return null;
+    }
+
+    @Override
+    public Object[] toArray() {
+        return new Object[0];
+    }
+
+    @Override
+    public <T> T[] toArray(T[] a) {
+        return null;
+    }
+    @Override
+    public boolean remove(Object o) {
+        return false;
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends Integer> c) {
+        return false;
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public void clear() {
+
     }
 }

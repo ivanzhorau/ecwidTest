@@ -1,7 +1,5 @@
 package by.zhorau.ipaddrcount;
 
-import java.nio.ByteBuffer;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -26,7 +24,7 @@ public class IpAddressCounter {
             int addressInt = convertAddressToInteger(parsedAddress);
             set.add(addressInt);
             iterations++;
-            if (iterations % 1000000 == 0) {
+            if (iterations % 10000000 == 0) {
                 System.out.println("Checked " + iterations + " lines\n" + "Count " + getCount() + "\n");
             }
         }
@@ -51,7 +49,7 @@ public class IpAddressCounter {
 
     private int convertAddressToInteger(short[] address) {
         int addressInt = 0;
-        int partInt =0;
+        int partInt;
         byte index = 0;
         for (short part : address) {
             partInt = (byte)(part - Byte.MAX_VALUE - 1)<<24;
